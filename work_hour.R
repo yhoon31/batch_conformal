@@ -83,12 +83,11 @@ p_values_2 <- sapply(comp_scores,function(v) batch_conformal(score_ref, v, ceili
 p_values_3 <- sapply(comp_scores,function(v) batch_conformal(score_ref, v, floor(length(v)*0.75)))
 
 rej_1_1 <- which(p_values_1 <= BH(p_values_1,0.01))
-rej_1_2 <- which(p_values_1 <= BH(p_values_1,0.02))
+rej_1_2 <- which(p_values_1 <= BH(p_values_1,0.05))
 rej_2_1 <- which(p_values_2 <= BH(p_values_2,0.01))
-rej_2_2 <- which(p_values_2 <= BH(p_values_2,0.02))
+rej_2_2 <- which(p_values_2 <= BH(p_values_2,0.05))
 rej_3_1 <- which(p_values_3 <= BH(p_values_3,0.01))
-rej_3_2 <- which(p_values_3 <= BH(p_values_3,0.02))
-
+rej_3_2 <- which(p_values_3 <= BH(p_values_3,0.05))
 
 #results
 t(sapply(c(comp_group_index[rej_1_1]), function(k) subgroup_list[[k]][1,c(2,3,5,8)]))
